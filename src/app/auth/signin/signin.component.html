@@ -1,0 +1,34 @@
+<h3>Sign In</h3>
+<form (ngSubmit)="onSubmit()" class="ui form" [formGroup]="authForm">
+  <app-input
+    inputType="text"
+    label="Username"
+    [control]="authForm.get('username')"
+  >
+  </app-input>
+  <app-input
+    inputType="password"
+    label="Password"
+    [control]="authForm.get('password')"
+  >
+  </app-input>
+
+  <div
+    *ngIf="authForm.errors"
+    class="ui red basic label"
+  >
+    <p *ngIf="authForm.errors.credentials">
+    invalid username or password
+    </p>
+    <p *ngIf="authForm.errors.noConnection">
+    No internet connection detected, failed to sign in
+    </p>
+    <p *ngIf="authForm.errors.unknownError">
+    Failed to sign in
+    </p>
+  </div>
+  <div>
+    <button class="ui submit button primary">Login</button>
+  </div>
+  </form>
+

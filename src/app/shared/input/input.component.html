@@ -1,0 +1,23 @@
+<!-- <p>app input</p> -->
+<div class="field">
+  <label> {{label}} </label>
+  <input [type]="inputType" [formControl]="control"/>
+  <div *ngIf="showErrors()" class="ui pointing red basic label">
+    <p *ngIf="control.errors.required">Value is Required</p>
+    <p *ngIf="control.errors.minlength">
+      Value you entered is {{control.errors.minlength.actualLength}}
+      Characters long, but it must be at least {{control.errors.minlength.requiredLength}}
+      characters
+    </p>
+    <p *ngIf="control.errors.maxlength">
+      Value you entered is {{control.errors.maxlength.actualLength}}
+      Characters long, but it cannot be longer than {{control.errors.maxlength.requiredLength}}
+      characters
+    </p>
+    <p *ngIf="control.errors.pattern">Invalid format</p>
+    <p *ngIf="control.errors.nonUniqueUsername">Username is taken</p>
+    <p *ngIf="control.errors.noConnection">Can't tell if username is taken</p>
+    <p *ngIf="control.errors.unknownError">No internet connection detected, Can't tell if username is taken </p>
+  </div>
+  <!-- {{control.errors | json}} -->
+</div>
